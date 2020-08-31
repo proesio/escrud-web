@@ -1,0 +1,125 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="Escrud - CRUD en Español">
+	<meta name="keywords" content="inicio,crud,escrud">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Inicio - Escrud - CRUD en Español</title>
+	<link rel="icon" type="image/png" href="imagenes/escrud-logo-transparente.png"/>
+	<link rel="stylesheet" href="css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="css/principal.css"/>
+	<script type="text/javascript" src="js/config.js"></script>
+</head>
+<body>
+<div id="escrud">
+<encabezado></encabezado>
+<div class="contenido">
+<div class="estadistica">
+<center>
+<p align="center">
+	<a href="https://packagist.org/packages/proesio/escrud" target="_blank"><img src="https://poser.pugx.org/proesio/escrud/downloads" alt="Total Descargas"></a>
+	<a href="https://packagist.org/packages/proesio/escrud" target="_blank"><img src="https://poser.pugx.org/proesio/escrud/v/stable" alt="Última Versión Estable"></a>
+	<a href="https://packagist.org/packages/proesio/escrud" target="_blank"><img src="https://poser.pugx.org/proesio/escrud/license" alt="Licencia"></a>
+</p>
+</center>
+</div>
+<div class="contenedor">
+<center>
+	<div class="con-info">
+		<div class="enc-info">
+			Escrud
+		</div>
+		<div class="info">
+			<p>
+				Escrud - CRUD en Español es una herramienta que genera
+				automáticamente una interfaz para crear, consultar, editar y eliminar
+				registros de una tabla en la base de datos por medio de métodos escritos en español.
+			</p>	
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+			Fácil de Usar
+		</div>
+		<div class="info">
+<pre><code><span class="php">&lt;?php</span>
+
+	<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
+	
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>Así de simple, con una sola línea de código.</p>
+		</div>
+	</div>
+	<div class="con-info">
+		<div class="enc-info">
+			Demostración
+		</div>
+		<div class="info">
+			<p>
+				Si deseas probar la demostración en pantalla completa presiona el siguiente 
+				<a id="escrud-demo-href" href="" class="vinculo" target="_blank">enlace</a>.
+			</p>
+			<iframe
+				id="escrud-demo-iframe"
+				title="Demostración - Escrud"
+				style="width:100%; height:500px; border:0px;"
+			></iframe>
+		</div>
+	</div>
+</center>
+</div>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+
+<script type="text/javascript" src="js/vue-2.5.16.min.js"></script>
+<script type="text/javascript" src="componentes/encabezado.js"></script>
+<script type="text/javascript" src="componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#escrud',
+	mounted(){
+		iFrame=document.getElementById('escrud-demo-iframe');
+		href=document.getElementById('escrud-demo-href');
+		iFrame.src=ESCRUD_DEMO;
+		href.href=ESCRUD_DEMO;
+	},
+});
+</script>
+
+<style type="text/css">
+	.contenedor{
+		display:block;
+	}
+	.con-info{
+		width:auto;
+		max-width:900px;
+	}
+	.enc-info{ 
+		width:auto;
+	}
+	.info{
+		width:auto;
+		height:auto;
+		text-align:justify;
+	}
+	.estadistica{
+		margin-top:100px;
+		margin-bottom:25px;
+	}
+	@media screen and (max-width:600px){
+		.estadistica{
+			margin-top:375px;
+		}
+	}
+</style>
+</body>
+</html>

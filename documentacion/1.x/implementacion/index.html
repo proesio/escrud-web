@@ -1,0 +1,175 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Juan Felipe Valencia Murillo">
+	<meta name="copyright" content="Juan Felipe Valencia Murillo">
+	<meta name="description" content="Escrud - CRUD en Español">
+	<meta name="keywords" content="implementacion,implementar,crud,escrud">
+	<meta name="robots" content="Index,Follow">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Implementación - Escrud - CRUD en Español</title>
+	<link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png"/>
+	<link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css"/>
+	<!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="../../../css/principal.css"/>
+	<script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+<body>
+<div id="escrud">
+<encabezado></encabezado>
+<menu-documentacion></menu-documentacion>
+<div class="contenido">
+<div class="regilla-contenedora">
+	<div class="documentacion">
+		<div style="font-size:300%;">Implementación</div>
+		<div class="hr"></div>
+		<p>
+			Escrud permite renderizar una interfaz con funcionalidad para crear, consultar, editar y eliminar
+			registros de una tabla en la base de datos por medio de métodos escritos en español.
+		</p>
+		<p>
+			A continuación, se muestra un listado de los 10 métodos disponibles en la herramienta Escrud para renderizar una tabla.
+		</p>
+		<table class="tabla" border="1">
+			<thead>
+				<tr>
+					<th>Método</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><em>actualizables()</em></td>
+					<td>Establece los campos que podrán ser actualizados.</td>
+				</tr>
+				<tr>
+					<td><em>actualizadoEn()</em></td>
+					<td>Establece el nombre del campo donde se registra el tiempo de la actualización del registro.</td>
+				</tr>
+				<tr>
+					<td><em>alias()</em></td>
+					<td>Establece los alias para cada campo que se mostrarán en la renderización de la tabla.</td>
+				</tr>
+				<tr>
+					<td><em>creadoEn()</em></td>
+					<td>Establece el nombre del campo donde se registra el tiempo de la creación del registro.</td>
+				</tr>
+				<tr>
+					<td><em>insertables()</em></td>
+					<td>Establece los campos que podrán ser insertados.</td>
+				</tr>
+				<tr>
+					<td><em>llavePrimaria()</em></td>
+					<td>Establece la llave primaria referente a la tabla especificada.</td>
+				</tr>
+				<tr>
+					<td><em>renderizar()</em></td>
+					<td>Renderiza la tabla especificada con su respectiva configuración.</td>
+				</tr>
+				<tr>
+					<td><em>ocultos()</em></td>
+					<td>Establece los campos que no se mostrarán en la renderización de la tabla.</td>
+				</tr>
+				<tr>
+					<td><em>tabla()</em></td>
+					<td>Crea una instancia de la clase HTML con el nombre de la tabla.</td>
+				</tr>
+				<tr>
+					<td><em>visibles()</em></td>
+					<td>Establece los campos que se mostrarán en la renderización de la tabla.</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Para renderizar una tabla de la base de datos lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>
+			Para realizar actualizaciones y eliminaciones Escrud por defecto determina que la llave primaria de nuestra tabla es <em>id</em>. 
+			En caso de que nuestra tabla no siga esta convención podemos definir nuestra llave primaria de la siguiente manera.
+		</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>
+			El método <em>visibles()</em> nos permite definir en una lista blanca los campos que se mostrarán
+			en la renderización de la tabla.
+		</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->visibles<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>
+			A diferencia del método <em>visibles()</em>, podemos definir en una lista negra
+			por medio del método <em>ocultos()</em> los campos que no deseamos
+			que se muestren en la renderización de la tabla.
+		</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->ocultos<span class="signo">(</span><span class="cadena">'contrasena'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>Podemos definir los campos que podrán ser insertados por medio del método <em>insertables()</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->insertables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>Podemos definir los campos que podrán ser actualizados por medio del método <em>actualizables()</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->actualizables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>
+			En ocasiones deseamos mostrar un nombre más diciente para los campos en la renderización de la tabla.
+			Podemos realizarlo por medio de método <em>alias()</em>.
+		</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->alias<span class="signo">([</span>
+			<span class="cadena">'nombres'</span> <span class="signo">=></span></span> <span class="cadena">'Nombres'</span><span class="signo">,</span>
+			<span class="cadena">'apellidos'</span> <span class="signo">=></span></span> <span class="cadena">'Apellidos'</span><span class="signo">,</span>
+			<span class="cadena">'telefono'</span> <span class="signo">=></span></span> <span class="cadena">'Teléfono'</span>
+		<span class="signo">])</span>->renderizar<span class="signo">();</span>
+</code></pre>
+		<p>
+			Escrud por defecto determina que los campos del registro del tiempo son <em>creado_en</em> y <em>actualizado_en</em>.
+			En caso de que nuestra tabla no siga esta convención podemos definir nuestros campos del registro del tiempo de la siguiente manera.
+		</p>
+<pre><code><span class="php">&lt;?php</span>
+	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+		->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
+		->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
+		->renderizar<span class="signo">();</span>
+</code></pre>
+	</div>
+</div>
+</div>
+<pie-pagina></pie-pagina>
+</div>
+<script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+<script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+<script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+<script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+<script type="text/javascript">
+new Vue({
+	el:'#escrud'
+});
+</script>
+
+<style type="text/css">
+@media screen and (max-width:930px){
+	.contenido{
+		margin-top:0px;
+	}
+}
+</style>
+</body>
+</html>

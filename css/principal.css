@@ -1,0 +1,505 @@
+/*Desarrollado Por Juan Felipe Valencia Murillo.*/
+*{
+	font-family: "OpenSans", sans-serif;
+}
+*:focus{
+	outline:none;
+}
+html{
+	scroll-behavior:smooth;
+}
+body{
+	margin:0px;
+	height:100%;
+	/*background-image:url('../imagenes/fondo.png');*/
+}
+/*Inicio Fuentes*/
+@font-face {
+	font-family: "OpenSans";
+	src: url("../fuentes/Open_Sans/OpenSans-Light.ttf");
+}
+/*Fin Fuentes*/
+/*Inicio Encabezado*/
+header{
+	position:fixed;
+	top:0px;
+	left:0px;
+	box-shadow:0px 1px 2px grey;
+	width:100%;
+	padding-top:0px;
+	padding-right:70px;
+	padding-left:70px;
+	padding-bottom:0px;
+	display:flex;
+	height:70px; 
+	background-color:white;
+}
+header>.logo{
+	cursor:pointer;
+}
+header>.logo>.titulo{
+	color:#5BC800;
+	font-weight:bold;
+	font-size:150%;
+	padding-top:10px;
+}
+header>.logo>.slogan{
+	color:grey;
+	font-size:60%;
+}
+header>.rutas{
+	padding-left:20px;
+}
+header>.rutas>a>button{
+	color:black;
+	border:0px;
+	background-color:white;
+	font-weight:bold;
+	cursor:pointer;
+	height:70px;
+}
+header>.rutas>a>button:hover{
+	color:#5BC800;
+	border-top: 5px solid white;
+	border-bottom: 5px solid #5BC800;
+}
+/*Fin Encabezado*/
+/*Inicio Footer*/
+footer{
+	width:100%;
+	background-color:#F9F9F9;
+	text-align:center;
+	padding-top:50px;
+	padding-bottom:50px;
+}
+footer>span{
+	color:#363637;
+	font-size:80%;
+	margin-bottom:50px;
+}
+footer>span:hover{
+	color:black;
+}
+footer>div>a{
+	color:black;
+	margin-right:20px;
+	font-size:200%;
+}
+footer>div>a:hover{
+	color:#5BC800;
+	font-size:200%;
+}
+/*Fin Footer*/
+/*Inicio Regilla Documentacion*/
+.menu-doc{
+	position:fixed;
+	width:140px;
+	padding:50px;
+	border-right:1px solid #f0f2f1;
+	grid-area:menu;
+}
+.documentacion{
+	padding-right:50px;
+	padding-left:50px;
+	grid-area:doc;
+}
+.regilla-contenedora{
+	display: grid;
+	grid-template-areas: 'menu doc';
+	grid-template-columns: 240px;
+	grid-gap:0px;
+	padding:0px;
+}
+/*Fin Regilla Documentacion*/
+/*Inicio estilo codigo*/
+pre{
+   /* background: hsla(0,0%,93%,.35);*/
+    background: #FBF5EF;
+    border-radius: 3px;
+    padding: 10px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.125);
+    box-shadow: 0 1px 1px rgba(0,0,0,.125);
+}
+code,pre{
+    color: black;
+    text-shadow: 0 1px white;
+    font-family: Operator Mono,Fira Code,Consolas,Monaco,Andale Mono,monospace;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    line-height: 1.7;
+    font-size: 12px;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+.php{
+	color:red;
+	font-weight:bold;
+}
+.palabra-clave{
+	color:blue;
+	font-weight:bold;
+}
+.cadena{
+	color:gray;
+}
+.numero{
+	color:#ff5733;
+}
+.variable{
+	color:#610B5E;
+	font-weight:bold;
+}
+.signo{
+	color:#0404B4;
+}
+.comentario{
+	color:green;
+}
+/*Fin estilo codigo*/
+/*Inicio modal*/
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.contenido-modal{
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+  overflow:auto;
+}
+.cerrar-modal {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.cerrar-modal:hover,.cerrar-modal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*Fin modal*/
+/*Inicio modal imagen*/
+.modal-imagen{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: none;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.imagen-modal{
+	max-width:400px;
+	max-height:533px;
+	width:100%;
+	height:auto;
+	margin-bottom:100px;
+	border:5px solid #5BC800;
+}
+.cerrar-modal-imagen{
+  position:fixed;
+  top:0px;
+  right:10px;
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+/*Fin modal imagen*/
+.contenedor{
+	background-color:#f0f2f1;
+	padding:50px; 
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.con-info{
+	width:240px;
+	box-shadow: 0px 0px 5px grey;
+	border-radius:5px;
+	margin:20px;
+}
+.con-info:hover{
+	border-radius:0px;
+	box-shadow: 0px 0px 10px grey;
+}
+.enc-info{ 
+	background-color:white; 
+	border-top-right-radius:5px;
+	border-top-left-radius:5px;
+	color:#5BC800;
+	width:200px;
+	font-weight:bold;
+	font-size:150%;
+	padding:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+	border-bottom:1px solid #f0f2f1;
+}
+.info{
+	background-color:white; 
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px;
+	color:grey;
+	width:200px;
+	height:200px;
+	padding:20px;
+	padding-top:5px;
+}
+.letra-grande{
+	font-size:500%;
+	text-align:center;
+}
+.letra-mediana{
+	font-size:400%;
+	text-align:center;
+}
+.letra-pequena{
+	font-size:200%;
+	text-align:center;
+}
+.contenido{
+	margin-top:70px;
+}
+.hr{
+	border-top:1px solid #f0f2f1;
+}
+.vinculo{
+	text-decoration:none;
+}
+.vinculo:hover{
+	text-decoration:underline;
+}
+@media screen and (max-width:1150px){
+	pre{
+		width:550px;
+		overflow-x:scroll;
+	}
+}
+@media screen and (max-width:930px){
+	.regilla-contenedora{
+		display:block;
+	}
+	.contenido{
+		margin-top:70px;
+	}
+	.menu-doc{
+		margin-top:50px;
+		position:relative;
+		width:auto;
+	}
+	header{
+		z-index:1;	
+	}
+	pre{
+		width:auto;
+		overflow-x:scroll;
+	}
+}
+@media screen and (max-width:850px){
+	.letra-grande{
+		font-size:400%;
+	}
+	.letra-mediana{
+		font-size:300%;
+	}
+	.letra-pequena{
+		font-size:150%;
+	}
+	.contenedor{
+		display:block;
+	}
+	.con-info{
+		margin:auto;
+		margin-bottom:20px;
+	}
+}
+@media screen and (max-width:600px){
+	header{
+		position:absolute;
+		padding-right:0px;
+		padding-left:0px;
+		display:block;
+		height:345px;
+	}
+	header>.logo{
+		margin-left:35%;
+	}
+	header>.rutas{
+		padding-left:0px;
+	}
+	header>.rutas>a>button{
+		width:100%;
+	}
+	.contenido{
+		margin-top:345px;
+	}
+	.letra-grande{
+		font-size:300%;
+	}
+	.letra-mediana{
+		font-size:200%;
+	}
+	.letra-pequena{
+		font-size:100%;
+	}
+	.menu-doc{
+		margin-top:345px;
+	}
+}
+/*Inicio title tooltip*/
+[data-title] {
+  position: relative;
+  cursor:default;
+}
+[data-title]:hover::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: -26px;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 2px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-family: sans-serif;
+  white-space: nowrap;
+}
+[data-title]:hover::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 8px;
+  display: inline-block;
+  color: #fff;
+  border: 8px solid transparent;	
+  border-bottom: 8px solid #000;
+}
+/*Fin title tooltip*/
+/*Inicio menú versión*/
+ul{
+	display:flex;
+	list-style:none;
+	padding:0px;
+}
+ul li a{
+	display:block;
+	padding:12px 12px;
+	color:white;
+	text-decoration:none !important;
+	background-color:#5BC800;
+}
+ul ul{
+	position:absolute;
+	display:block;
+	background-color:#3DB7F4  ;
+	transform:translateX(60%);
+	opacity:0;
+	visibility:hidden;				
+	transition:all 0.6s;
+}
+ul li:hover ul{
+	opacity:1;
+	visibility:visible;					
+	transform:translateX(0%);
+}
+ul li a i{
+	transition:all 0.6s;
+}
+ul li a:hover i{
+	transform:translateY(10px);
+	opacity:0;
+}
+ul li ul li:hover a{
+	background-color:white;
+	color:green;
+	transition:all 0.6s;
+}
+/*Fin menú versión*/
+.menu_link{
+	color:black;
+	display:block;
+	text-decoration:none;
+	margin-bottom:5px;
+}
+.menu_link:hover{
+	color:#5BC800;
+}
+.accion-subir{
+	position:fixed;
+	bottom:10px;
+	right:10px;
+	display:flex;
+    justify-content:center;
+    align-content:center;
+	flex-direction:column;
+	width:50px;
+	height:50px;
+	background-color:gray;
+	border-radius:5px;
+	cursor:pointer;
+	font-size:150%;
+	opacity:0.5;
+	transition:0.5s;
+	visibility:hidden;
+}
+.accion-subir:hover{
+	opacity:0.8;
+}
+.tabla{
+	-webkit-width:100%;
+	border-collapse: collapse;
+}
+.tabla > thead > tr{
+	background-color:#5BC800;
+	color:white;
+}
+.tabla tr:nth-child(even){
+	background-color: #f0f2f1;
+}
+.insignia{
+	display:inline-block;
+	background-color:#5F5F5F;
+	width:auto;
+	border-radius:4px;
+	padding-left:5px;
+	font-size:70%;
+	text-shadow: 0px 1px black;
+}
+.insignia > .titulo{
+	color:white;
+}
+.insignia > .dato{
+	background-color:#147BCF;
+	padding:3px;
+	padding-right:5px;
+	border-top-right-radius:4px;
+	border-bottom-right-radius:4px;
+	color:white;
+	display:inline-block;
+}
