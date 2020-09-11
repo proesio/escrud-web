@@ -28,30 +28,32 @@
 		<p>Escrud es muy sencillo de configurar.</p>
 		<p>Cuando hayamos terminado la instalación por medio de composer debemos incluir el archivo <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar la herramienta Escrud.</p>
 		<p>Para configurar la herramienta Escrud inicializamos la configuración de la siguiente manera.</p>		
-<pre><code><span class="php">&lt;?php</span>
-	<span class="palabra-clave">require</span> <span class="cadena">'vendor/autoload.php'</span><span class="signo">;</span>
-	
-	<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
-	<span class="palabra-clave">use</span> Escrud\Clases\Configuracion<span class="signo">;</span>
-	
-	Configuracion::inicializar<span class="signo">([</span>
-		<span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// Soporta mysql, pgsql, sqlite y sqlsrv.</span>
-		<span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// IP o DNS del servidor.</span>
-		<span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// Puerto donde se ejecuta el servicio.</span>
-		<span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// Usuario de la base de datos.</span>
-		<span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// Contraseña de la base de datos.</span>
-		<span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// Nombre de la base de datos.</span>
-		<span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// Juego de caracteres. Ej: utf8.</span>
-		<span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// Idioma para mostrar etiquetas, errores SQL y mensajes de la herramienta Escrud. Soporta es, en.</span>
-		<span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// [Valor UTC por defecto] Ej: America/Bogota.</span>
-	<span class="signo">]);</span>
-	<span class="comentario">
-		/*
-			Finalmente verificamos que hemos inicializado la configuración correctamente
-			imprimiendo la versión de la herramienta Escrud.
-		*/
-	</span>
-	<span class="palabra-clave">echo</span> Escrud::VERSION<span class="palabra-clave">;</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">require</span> <span class="cadena">'vendor/autoload.php'</span><span class="signo">;</span>
+
+<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
+<span class="palabra-clave">use</span> Escrud\Clases\Configuracion<span class="signo">;</span>
+
+Configuracion::inicializar<span class="signo">([</span>
+    <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// Soporta mysql, pgsql, sqlite y sqlsrv.</span>
+    <span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// IP o DNS del servidor.</span>
+    <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// Puerto donde se ejecuta el servicio.</span>
+    <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// Usuario de la base de datos.</span>
+    <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// Contraseña de la base de datos.</span>
+    <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// Nombre de la base de datos.</span>
+    <span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// Juego de caracteres. Ej: utf8.</span>
+    <span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// Idioma para mostrar etiquetas, errores SQL y mensajes de la herramienta Escrud. Soporta es, en.</span>
+    <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// [Valor UTC por defecto] Ej: America/Bogota.</span>
+<span class="signo">]);</span>
+<span class="comentario">
+/*
+  Finalmente verificamos que hemos inicializado la configuración correctamente
+  imprimiendo la versión de la herramienta Escrud.
+*/
+</span>
+<span class="palabra-clave">echo</span> Escrud::VERSION<span class="palabra-clave">;</span>
 </code></pre>
 	</div>
 </div>

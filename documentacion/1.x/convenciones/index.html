@@ -29,16 +29,19 @@
 		<p>Convención #1: La llave primaria de la tabla debe llamarse <em>id</em> y tener el atributo <em>autoincrement</em>.</p>
 		<p>Convención #2: Las tablas en la base de datos deben contar con dos campos que puedan ser nulos y de tipo <em>timestamp</em> llamados <em>creado_en</em> y <em>actualizado_en</em> los cuales nos permiten llevar el registro del tiempo.</p>
 		<p>Si no deseamos utilizar estas convenciones podemos omitirlas de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
-		->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
-		->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
+    ->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
+    ->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 	</div>
 </div>
 </div>
+<div style="margin-bottom: 10%;"></div>
 <pie-pagina></pie-pagina>
 </div>
 <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>

@@ -83,70 +83,100 @@
 			</tbody>
 		</table>
 		<p>Para renderizar una tabla de la base de datos lo hacemos de la siguiente manera.</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>
 			Para realizar actualizaciones y eliminaciones Escrud por defecto determina que la llave primaria de nuestra tabla es <em>id</em>. 
 			En caso de que nuestra tabla no siga esta convención podemos definir nuestra llave primaria de la siguiente manera.
 		</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>
 			El método <em>visibles()</em> nos permite definir en una lista blanca los campos que se mostrarán
 			en la renderización de la tabla.
 		</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->visibles<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->visibles<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>
 			A diferencia del método <em>visibles()</em>, podemos definir en una lista negra
 			por medio del método <em>ocultos()</em> los campos que no deseamos
 			que se muestren en la renderización de la tabla.
 		</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->ocultos<span class="signo">(</span><span class="cadena">'contrasena'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ocultos<span class="signo">(</span><span class="cadena">'contrasena'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>Podemos definir los campos que podrán ser insertados por medio del método <em>insertables()</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->insertables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->insertables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>Podemos definir los campos que podrán ser actualizados por medio del método <em>actualizables()</em>.</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->actualizables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->actualizables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>
 			En ocasiones deseamos mostrar un nombre más diciente para los campos en la renderización de la tabla.
 			Podemos realizarlo por medio de método <em>alias()</em>.
 		</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->alias<span class="signo">([</span>
-			<span class="cadena">'nombres'</span> <span class="signo">=></span></span> <span class="cadena">'Nombres'</span><span class="signo">,</span>
-			<span class="cadena">'apellidos'</span> <span class="signo">=></span></span> <span class="cadena">'Apellidos'</span><span class="signo">,</span>
-			<span class="cadena">'telefono'</span> <span class="signo">=></span></span> <span class="cadena">'Teléfono'</span>
-		<span class="signo">])</span>->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->alias<span class="signo">([</span>
+        <span class="cadena">'nombres'</span> <span class="signo">=></span></span> <span class="cadena">'Nombres'</span><span class="signo">,</span>
+        <span class="cadena">'apellidos'</span> <span class="signo">=></span></span> <span class="cadena">'Apellidos'</span><span class="signo">,</span>
+        <span class="cadena">'telefono'</span> <span class="signo">=></span></span> <span class="cadena">'Teléfono'</span>
+    <span class="signo">])</span>->renderizar<span class="signo">();</span>
 </code></pre>
 		<p>
 			Escrud por defecto determina que los campos del registro del tiempo son <em>creado_en</em> y <em>actualizado_en</em>.
 			En caso de que nuestra tabla no siga esta convención podemos definir nuestros campos del registro del tiempo de la siguiente manera.
 		</p>
-<pre><code><span class="php">&lt;?php</span>
-	Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-		->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
-		->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
-		->renderizar<span class="signo">();</span>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
+    ->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+    <p>
+			Podemos ordenar los datos en la renderización de la tabla por medio del método <em>ordenarPor().</em>
+		</p>
+<pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ordenarPor<span class="signo">(</span><span class="cadena">'id'</span><span class="signo">,</span> <span class="cadena">'desc'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+  
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ordenarPor<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span><span class="signo">],</span> <span class="cadena">'desc'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
 </code></pre>
 	</div>
 </div>
