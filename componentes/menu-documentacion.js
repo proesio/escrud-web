@@ -13,21 +13,22 @@ Vue.component('menu-documentacion', {
       menu: [],
       menuVersion: {},
       versiones: [
+        'v2.x',
         'v1.x'
       ]
     }
   },
   mounted() {
-    this.asignarMenu('v1.x');
-    this.asignarMenuVersion('v1.x');
+    this.asignarMenu('v2.x');
+    this.asignarMenuVersion('v2.x');
   },
   methods: {
     asignarMenu(version) {
       this.menu = [
-        { href: this.host + 'documentacion/_version_/instalacion/', texto: 'Instalación' },
-        { href: this.host + 'documentacion/_version_/configuracion/', texto: 'Configuración' },
-        { href: this.host + 'documentacion/_version_/convenciones/', texto: 'Convenciones' },
-        { href: this.host + 'documentacion/_version_/implementacion/', texto: 'Implementación' }
+        { href: `${this.host}documentacion/_version_/instalacion/`, texto: 'Instalación' },
+        { href: `${this.host}documentacion/_version_/configuracion/`, texto: 'Configuración' },
+        { href: `${this.host}documentacion/_version_/convenciones/`, texto: 'Convenciones' },
+        { href: `${this.host}documentacion/_version_/implementacion/`, texto: 'Implementación' }
       ];
       version = this.obtenerVersionURL(version).substr(1, 3);
       this.menu.forEach(function (item) {

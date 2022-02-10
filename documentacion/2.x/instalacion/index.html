@@ -7,10 +7,10 @@
   <meta name="author" content="Juan Felipe Valencia Murillo">
   <meta name="copyright" content="Juan Felipe Valencia Murillo">
   <meta name="description" content="Escrud - CRUD en Español">
-  <meta name="keywords" content="convenciones,convencion,crud,escrud">
+  <meta name="keywords" content="instalacion,instalar,crud,escrud">
   <meta name="robots" content="Index,Follow">
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Convenciones - Escrud - CRUD en Español</title>
+  <title>Instalación - Escrud - CRUD en Español</title>
   <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
   <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
   <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
@@ -25,29 +25,18 @@
     <div class="contenido">
       <div class="regilla-contenedora">
         <div class="documentacion">
-          <div style="font-size:300%;">Convenciones</div>
+          <div style="font-size:300%;">Instalación</div>
           <div class="hr"></div>
-          <p>Escrud tiene dos convenciones que se recomiendan utilizar para aprovechar al máximo la herramienta.</p>
-          <p>Convención #1: La llave primaria de la tabla debe llamarse <em>id</em> y tener el atributo auto
-            incrementable.</p>
-          <p>Convención #2: Las tablas en la base de datos deben contar con dos campos que puedan ser nulos y de tipo
-            <em>timestamp</em> llamados <em>creado_en</em> y <em>actualizado_en</em> los cuales nos permiten llevar el
-            registro del tiempo.
-          </p>
-          <p>Si no deseamos utilizar estas convenciones podemos omitirlas de la siguiente manera.</p>
-          <pre>
-<code><span class="php">&lt;?php</span>
-
-Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
-    ->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
-    ->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
-    ->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
-    ->renderizar<span class="signo">();</span>
-</code></pre>
+          <p>Escrud es muy sencillo de instalar.</p>
+          <p>Escrud requiere una versión de PHP >= 7.3.0 para poder ser instalado.</p>
+          <p>Para instalar Escrud abrimos nuestra terminal, nos ubicamos en el directorio donde deseamos instalar
+            nuestro proyecto y ejecutamos el siguiente comando.</p>
+          <pre><code>$ composer create-project --prefer-dist proesio/escrud nombre-proyecto</code></pre>
+          <p>Una vez terminado el proceso, composer creará un directorio con el nombre de proyecto que hayamos
+            especificado, donde quedará instalada la herramienta Escrud.</p>
         </div>
       </div>
     </div>
-    <div style="margin-bottom: 10%;"></div>
     <pie-pagina></pie-pagina>
   </div>
   <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
