@@ -32,7 +32,7 @@
             registros de una tabla en la base de datos por medio de métodos escritos en español.
           </p>
           <p>
-            A continuación, se muestra un listado de los 15 métodos disponibles en la herramienta Escrud para renderizar
+            A continuación, se muestra un listado de los 17 métodos disponibles en la herramienta Escrud para renderizar
             una tabla.
           </p>
           <table class="tabla" border="1">
@@ -43,6 +43,10 @@
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td><em>accesores()</em></td>
+                <td>Establece las modificaciones de datos por medio de funciones anónimas (closure) después de su obtención.</td>
+              </tr>
               <tr>
                 <td><em>acciones()</em></td>
                 <td>Establece las acciones que serán gestionadas.</td>
@@ -78,6 +82,10 @@
               <tr>
                 <td><em>llavePrimaria()</em></td>
                 <td>Establece la llave primaria referente a la tabla especificada.</td>
+              </tr>
+              <tr>
+                <td><em>mutadores()</em></td>
+                <td>Establece las modificaciones de datos por medio de funciones anónimas (closure) antes de su inserción.</td>
               </tr>
               <tr>
                 <td><em>noBuscables()</em></td>
@@ -246,10 +254,10 @@ Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><
 Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
     ->acciones<span class="signo">(</span>
         <span class="signo">[</span>
-            <span class="cadena">'acciones'</span> <span class="signo">=></span></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva todas las acciones de la tabla.</span>
-            <span class="cadena">'crear'</span> <span class="signo">=></span></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la creación de registros.</span>
-            <span class="cadena">'editar'</span> <span class="signo">=></span></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la edición de registros.</span>
-            <span class="cadena">'eliminar'</span> <span class="signo">=></span></span> <span class="palabra-clave">true</span> <span class="comentario">// Activa o inactiva la eliminación de registros.</span>
+            <span class="cadena">'acciones'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva todas las acciones de la tabla.</span>
+            <span class="cadena">'crear'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la creación de registros.</span>
+            <span class="cadena">'editar'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la edición de registros.</span>
+            <span class="cadena">'eliminar'</span> <span class="signo">=></span> <span class="palabra-clave">true</span> <span class="comentario">// Activa o inactiva la eliminación de registros.</span>
         <span class="signo">]</span>
     <span class="signo">)</span>->renderizar<span class="signo">();</span>
 </code></pre>
@@ -263,7 +271,39 @@ Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><
     ->titulo<span class="signo">(</span><span class="cadena">'Lista de usuarios'</span><span class="signo">)</span>
     ->renderizar<span class="signo">();</span>
 </code></pre>
-          <p>Escrud lanza dos tipos de excepciones, Escrud y Exception, las cuales podemos manejar de la siguiente manera.</p>
+          <p>
+            El método <em>mutadores</em>, establece las modificaciones personalizadas de datos para cada campo de la tabla
+            antes de su inserción en la base de datos, esto es posible por medio de funciones anónimas (closure).
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->mutadores<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="palabra-clave">function</span> <span class="signo">(</span><span class="variable">$valor</span><span class="signo">) {</span>
+                <span class="palabra-clave">return</span> <span class="palabra-clave">strtoupper</span><span class="signo">(</span><span class="variable">$valor</span><span class="signo">);</span>
+            <span class="signo">}</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            El método <em>accesores</em>, establece las modificaciones personalizadas de datos para cada campo de la tabla
+            después de su obtención en la base de datos, esto es posible por medio de funciones anónimas (closure).
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->accesores<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'creado_en'</span> <span class="signo">=></span> <span class="palabra-clave">function</span> <span class="signo">(</span><span class="variable">$valor</span><span class="signo">) {</span>
+                <span class="variable">$dateTime</span> <span class="signo">=</span> <span class="palabra-clave">new</span> DateTime<span class="signo">(</span><span class="variable">$valor</span><span class="signo">);</span>
+
+                <span class="palabra-clave">return</span> <span class="variable">$dateTime</span>->format<span class="signo">(</span><span class="cadena">'Y-m-d H:i:s'</span><span class="signo">);</span>
+            <span class="signo">}</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Escrud lanza dos tipos de excepciones, <em>Escrud</em> y <em>Exception</em>, las cuales podemos manejar de la siguiente manera.</p>
 <pre><code><span class="php">&lt;?php</span>
 
 <span class="palabra-clave">use</span> Exception<span class="signo">;</span>
