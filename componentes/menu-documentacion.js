@@ -13,6 +13,7 @@ Vue.component('menu-documentacion', {
       menu: [],
       menuVersion: {},
       versiones: [
+        'v3.x',
         'v2.x',
         'v1.x'
       ]
@@ -30,11 +31,11 @@ Vue.component('menu-documentacion', {
         { href: `${this.host}documentacion/_version_/convenciones/`, texto: 'Convenciones' },
         { href: `${this.host}documentacion/_version_/implementacion/`, texto: 'Implementación' }
       ];
-      version = this.obtenerVersionURL(version).substr(1, 3);
+      version = this.obtenerVersionURL(version).substring(1, 4);
       this.menu.forEach(function (item) {
         item.href = item.href.replace('_version_', version);
       });
-      if (version.substr(0, 1) >= 4) this.eliminarItemMenu(version, 'autenticar-usuarios');
+      if (version.substring(0, 1) >= 4) this.eliminarItemMenu(version, 'autenticar-usuarios');
     },
     asignarMenuVersion(version) {
       version = this.obtenerVersionURL(version);
@@ -51,7 +52,7 @@ Vue.component('menu-documentacion', {
     obtenerVersionURL(defecto = null) {
       let version = defecto;
       let index = location.href.indexOf('.x');
-      if (index > -1) version = 'v' + location.href.substr(index - 1, 3);
+      if (index > -1) version = 'v' + location.href.substring(index - 1, index + 2);
       return version;
     },
     eliminarItemMenu(version, itemMenu) {
@@ -68,7 +69,7 @@ Vue.component('menu-documentacion', {
         <li><a style="cursor:pointer;">{{menuVersion.actual}} <i class="fa fa-angle-down"></i></a>
             <ul>
                 <li v-for="(item, index) in menuVersion.versiones">
-                    <a :href="host+'documentacion/'+item.substr(1,3)">{{item}}</a>
+                    <a :href="host+'documentacion/'+item.substring(1, 4)">{{item}}</a>
                 </li>
             </ul>
         </li>
