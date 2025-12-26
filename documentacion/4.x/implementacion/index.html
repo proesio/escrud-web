@@ -1,0 +1,345 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Escrud - CRUD en Español">
+  <meta name="keywords" content="implementacion,implementar,crud,escrud">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Implementación - Escrud - CRUD en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="escrud">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Implementación</div>
+          <div class="hr"></div>
+          <p>
+            Escrud permite renderizar una interfaz con funcionalidad para crear, consultar, editar y eliminar
+            registros de una tabla en la base de datos por medio de métodos escritos en español.
+          </p>
+          <p>
+            A continuación, se muestra un listado de los 17 métodos disponibles en la herramienta Escrud para renderizar
+            una tabla.
+          </p>
+          <table class="tabla" border="1">
+            <thead>
+              <tr>
+                <th>Método</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><em>accesores()</em></td>
+                <td>Establece las modificaciones de datos por medio de funciones anónimas (closure) después de su obtención.</td>
+              </tr>
+              <tr>
+                <td><em>acciones()</em></td>
+                <td>Establece las acciones que serán gestionadas.</td>
+              </tr>
+              <tr>
+                <td><em>actualizables()</em></td>
+                <td>Establece los campos que podrán ser actualizados.</td>
+              </tr>
+              <tr>
+                <td><em>actualizadoEn()</em></td>
+                <td>Establece el nombre del campo donde se registra el tiempo de la actualización del registro.</td>
+              </tr>
+              <tr>
+                <td><em>alias()</em></td>
+                <td>Establece los alias para cada campo que se mostrarán en la renderización de la tabla.</td>
+              </tr>
+              <tr>
+                <td><em>buscables()</em></td>
+                <td>Establece los campos que podrán ser buscados.</td>
+              </tr>
+              <tr>
+                <td><em>conexion()</em></td>
+                <td>Establece la conexión según el nombre definido.</td>
+              </tr>
+              <tr>
+                <td><em>creadoEn()</em></td>
+                <td>Establece el nombre del campo donde se registra el tiempo de la creación del registro.</td>
+              </tr>
+              <tr>
+                <td><em>insertables()</em></td>
+                <td>Establece los campos que podrán ser insertados.</td>
+              </tr>
+              <tr>
+                <td><em>llavePrimaria()</em></td>
+                <td>Establece la llave primaria referente a la tabla especificada.</td>
+              </tr>
+              <tr>
+                <td><em>mutadores()</em></td>
+                <td>Establece las modificaciones de datos por medio de funciones anónimas (closure) antes de su inserción.</td>
+              </tr>
+              <tr>
+                <td><em>noBuscables()</em></td>
+                <td>Establece los campos que no podrán ser buscados.</td>
+              </tr>
+              <tr>
+                <td><em>renderizar()</em></td>
+                <td>Renderiza la tabla especificada con su respectiva configuración.</td>
+              </tr>
+              <tr>
+                <td><em>ocultos()</em></td>
+                <td>Establece los campos que no se mostrarán en la renderización de la tabla.</td>
+              </tr>
+              <tr>
+                <td><em>tabla()</em></td>
+                <td>Crea una instancia de la clase HTML con el nombre de la tabla.</td>
+              </tr>
+              <tr>
+                <td><em>titulo()</em></td>
+                <td>Establece el título de la tabla.</td>
+              </tr>
+              <tr>
+                <td><em>visibles()</em></td>
+                <td>Establece los campos que se mostrarán en la renderización de la tabla.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>La clase <em>Escrud</em>, proporciona constantes que permiten obtener información de la herramienta Escrud.</p>
+          <p>A continuación, se muestra un listado de las 2 constantes disponibles en la clase <em>Escrud</em>.</p>
+          <table class="tabla" border="1">
+            <thead>
+              <tr>
+                <th>Constante</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><em>Escrud::AUTOR</em></td>
+                <td>Indica el autor de la herramienta Escrud.</td>
+              </tr>
+              <tr>
+                <td><em>Escrud::VERSION</em></td>
+                <td>Indica la versión actual de la herramienta Escrud.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Para renderizar una tabla de la base de datos lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Para seleccionar una de las conexiones definidas en la inicialización de la configuración, lo hacemos de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::conexion<span class="signo">(</span><span class="cadena">'mysql'</span><span class="signo">)</span>
+    ->tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            Para identificar cada registro, Escrud por defecto, determina que la llave primaria de nuestra
+            tabla es <em>id</em>.
+            En caso de que nuestra tabla no siga esta convención, podemos definir nuestra llave primaria de la siguiente
+            manera.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            El método <em>visibles</em>, nos permite definir en una lista blanca los campos que se mostrarán
+            en la renderización de la tabla.
+          </p>
+          <pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->visibles<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            A diferencia del método <em>visibles</em>, podemos definir en una lista negra
+            por medio del método <em>ocultos</em> los campos que no deseamos
+            que se muestren en la renderización de la tabla.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ocultos<span class="signo">(</span><span class="cadena">'contrasena'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Podemos definir los campos que podrán ser insertados por medio del método <em>insertables</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->insertables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Podemos definir los campos que podrán ser actualizados por medio del método <em>actualizables</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->actualizables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Podemos definir los campos en los cuales se podrá realizar una búsqueda por medio del método <em>buscables</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->buscables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">, </span><span class="cadena">'apellidos'</span><span class="signo">, </span><span class="cadena">'documento'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>También, podemos definir los campos en los cuales no se podrá realizar una búsqueda por medio del método <em>noBuscables</em>.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->noBuscables<span class="signo">(</span><span class="cadena">'nombres'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>El método <em>alias</em>, nos permite definir un nombre personalizado para los campos en la renderización de la tabla.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->alias<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'nombres'</span> <span class="signo">=></span></span> <span class="cadena">'Nombres'</span><span class="signo">,</span>
+            <span class="cadena">'apellidos'</span> <span class="signo">=></span></span> <span class="cadena">'Apellidos'</span><span class="signo">,</span>
+            <span class="cadena">'telefono'</span> <span class="signo">=></span></span> <span class="cadena">'Teléfono'</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            Escrud por defecto determina que los campos del registro del tiempo son <em>creado_en</em> y
+            <em>actualizado_en</em>.
+            En caso de que nuestra tabla no siga esta convención, podemos definir nuestros campos del registro del tiempo
+            de la siguiente manera.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->creadoEn<span class="signo">(</span><span class="cadena">'fecha_creacion'</span><span class="signo">)</span>
+    ->actualizadoEn<span class="signo">(</span><span class="cadena">'fecha_actualizacion'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            Podemos ordenar los registros en la renderización de la tabla por medio del método <em>ordenarPor.</em>
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ordenarPor<span class="signo">(</span><span class="cadena">'id'</span><span class="signo">,</span> <span class="cadena">'desc'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->ordenarPor<span class="signo">([</span><span class="cadena">'nombres'</span><span class="signo">,</span> <span class="cadena">'apellidos'</span><span class="signo">],</span> <span class="cadena">'desc'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            El método <em>acciones</em>, permite activar o inactivar las gestiones de creación, edición o eliminación de registros.
+            Todas las acciones están activas de forma predeterminada.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->acciones<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'acciones'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva todas las acciones de la tabla.</span>
+            <span class="cadena">'crear'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la creación de registros.</span>
+            <span class="cadena">'editar'</span> <span class="signo">=></span> <span class="palabra-clave">true</span><span class="signo">,</span> <span class="comentario">// Activa o inactiva la edición de registros.</span>
+            <span class="cadena">'eliminar'</span> <span class="signo">=></span> <span class="palabra-clave">true</span> <span class="comentario">// Activa o inactiva la eliminación de registros.</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            Podemos establecer un título para nuestra tabla por medio del método <em>titulo</em>.
+            El nombre de la tabla se muestra como título de forma predeterminada.
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->titulo<span class="signo">(</span><span class="cadena">'Lista de usuarios'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            El método <em>mutadores</em>, establece las modificaciones personalizadas de datos para cada campo de la tabla
+            antes de su inserción en la base de datos, esto es posible por medio de funciones anónimas (closure).
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->mutadores<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'nombres'</span> <span class="signo">=></span> <span class="palabra-clave">function</span> <span class="signo">(</span><span class="variable">$valor</span><span class="signo">) {</span>
+                <span class="palabra-clave">return</span> <span class="palabra-clave">strtoupper</span><span class="signo">(</span><span class="variable">$valor</span><span class="signo">);</span>
+            <span class="signo">}</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>
+            El método <em>accesores</em>, establece las modificaciones personalizadas de datos para cada campo de la tabla
+            después de su obtención en la base de datos, esto es posible por medio de funciones anónimas (closure).
+          </p>
+<pre><code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->accesores<span class="signo">(</span>
+        <span class="signo">[</span>
+            <span class="cadena">'creado_en'</span> <span class="signo">=></span> <span class="palabra-clave">function</span> <span class="signo">(</span><span class="variable">$valor</span><span class="signo">) {</span>
+                <span class="variable">$dateTime</span> <span class="signo">=</span> <span class="palabra-clave">new</span> DateTime<span class="signo">(</span><span class="variable">$valor</span><span class="signo">);</span>
+
+                <span class="palabra-clave">return</span> <span class="variable">$dateTime</span>->format<span class="signo">(</span><span class="cadena">'Y-m-d H:i:s'</span><span class="signo">);</span>
+            <span class="signo">}</span>
+        <span class="signo">]</span>
+    <span class="signo">)</span>->renderizar<span class="signo">();</span>
+</code></pre>
+          <p>Escrud lanza dos tipos de excepciones, <em>Escrud</em> y <em>Exception</em>, las cuales podemos manejar de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">use</span> Exception<span class="signo">;</span>
+<span class="palabra-clave">use</span> Escrud\Clases\Excepciones\Escrud <span class="palabra-clave">as</span> EscrudExcepcion<span class="signo">;</span>
+
+<span class="palabra-clave">try</span> <span class="signo">{</span>
+    <span class="comentario">// Todo tu código aquí.</span>
+<span class="signo">}</span> <span class="palabra-clave">catch</span> <span class="signo">(</span>EscrudExcepcion <span class="variable">$excepcion</span><span class="signo">) {</span>
+    <span class="comentario">// Todo tu código aquí.</span>
+<span class="signo">}</span> <span class="palabra-clave">catch</span> <span class="signo">(</span>Exception <span class="variable">$excepcion</span><span class="signo">) {</span>
+    <span class="comentario">// Todo tu código aquí.</span>
+<span class="signo">}</span>
+</code></pre>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#escrud'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

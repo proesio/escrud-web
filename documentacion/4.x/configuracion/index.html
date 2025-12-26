@@ -1,0 +1,193 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Escrud - CRUD en Español">
+  <meta name="keywords" content="configuracion,configurar,crud,escrud">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Configuración - Escrud - CRUD en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="escrud">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Configuración</div>
+          <div class="hr"></div>
+          <p>A continuación, se muestra un listado de las 11 constantes disponibles en el método <em>inicializar()</em>
+            de la clase <em>Configuracion</em> para inicializar la configuración de la herramienta Escrud.</p>
+          <table class="tabla" border="1">
+            <thead>
+              <tr>
+                <th>Constante</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><em>BD_CONTROLADOR</em></td>
+                <td>Establece el controlador de la conexión. Soporta mysql, pgsql, sqlite y sqlsrv.</td>
+              </tr>
+              <tr>
+                <td><em>BD_HOST</em></td>
+                <td>Establece la IP o DNS del servidor de bases de datos.</td>
+              </tr>
+              <tr>
+                <td><em>BD_PUERTO</em></td>
+                <td>Establece el puerto donde se ejecuta el servicio.</td>
+              </tr>
+              <tr>
+                <td><em>BD_USUARIO</em></td>
+                <td>Establece el usuario de la base de datos.</td>
+              </tr>
+              <tr>
+                <td><em>BD_CONTRASENA</em></td>
+                <td>Establece la contraseña de la base de datos.</td>
+              </tr>
+              <tr>
+                <td><em>BD_BASEDATOS</em></td>
+                <td>Establece el nombre de la base de datos que será utilizada.</td>
+              </tr>
+              <tr>
+                <td><em>BD_DATOS_DSN</em></td>
+                <td>Establece detalles adicionales para la conexión de la base de datos.</td>
+              </tr>
+              <tr>
+                <td><em>IDIOMA</em></td>
+                <td>Establece el idioma para mostrar errores SQL y mensajes de la herramienta Escrud. Soporta es, en.</td>
+              </tr>
+              <tr>
+                <td><em>ZONA_HORARIA</em></td>
+                <td>Establece la zona horaria para registrar la marca de tiempo. Ejemplo: <em>America/Bogota</em>. El
+                  valor por defecto es <em>UTC</em>.</td>
+              </tr>
+              <tr>
+                <td><em>COMANDO_INICIAL</em></td>
+                <td>Establece la sentencia SQL que será ejecutada una vez se establezca la conexión.</td>
+              </tr>
+              <tr>
+                <td><em>OPCIONES</em></td>
+                <td>Establece opciones de conexión específicas del controlador por medio de un arreglo, según las
+                  especificaciones de <em>PDO</em>.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Escrud es muy sencillo de configurar.</p>
+          <p>Cuando hayamos terminado la instalación por medio de composer, debemos incluir el archivo
+            <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar la herramienta Escrud.
+          </p>
+          <p>Para configurar la herramienta Escrud, inicializamos la configuración de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
+
+<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
+<span class="palabra-clave">use</span> Escrud\Clases\Configuracion<span class="signo">;</span>
+
+Configuracion::inicializar<span class="signo">(</span>
+    <span class="signo">[</span>
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'mysql'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="numero">3306</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'escrud'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+        <span class="cadena">'COMANDO_INICIAL'</span> <span class="signo">=></span> <span class="cadena">'set names utf8mb4 collate utf8mb4_unicode_ci'</span><span class="signo">,</span>
+        <span class="cadena">'OPCIONES'</span> <span class="signo">=></span> <span class="signo">[</span>PDO::MYSQL_ATTR_LOCAL_INFILE <span class="signo">=></span> <span class="numero">1</span><span class="signo">]</span>
+    <span class="signo">]</span>
+<span class="signo">);</span>
+<span class="comentario">
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión de la herramienta Escrud.
+ */
+</span>
+<span class="palabra-clave">echo</span> Escrud::VERSION<span class="palabra-clave">;</span>
+</code></pre>
+          <p>Escrud permite configurar múltiples conexiones de la siguiente manera.</p>
+<pre><code><span class="php">&lt;?php</span>
+
+<span class="palabra-clave">require_once</span> <span class="palabra-clave">__DIR__</span><span class="signo">.</span><span class="cadena">'/vendor/autoload.php'</span><span class="signo">;</span>
+
+<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
+<span class="palabra-clave">use</span> Escrud\Clases\Configuracion<span class="signo">;</span>
+
+<span class="variable">$conexiones</span> <span class="signo">= [</span>
+    <span class="cadena">'mysql'</span> <span class="signo">=> [</span> 
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'mysql'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="numero">3306</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'root'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'escrud'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+        <span class="cadena">'COMANDO_INICIAL'</span> <span class="signo">=></span> <span class="cadena">'set names utf8mb4 collate utf8mb4_unicode_ci'</span><span class="signo">,</span>
+        <span class="cadena">'OPCIONES'</span> <span class="signo">=></span> <span class="signo">[</span>PDO::MYSQL_ATTR_LOCAL_INFILE <span class="signo">=></span> <span class="numero">1</span><span class="signo">]</span>
+    <span class="signo">],</span>
+    <span class="cadena">'sqlsrv'</span> <span class="signo">=> [</span> 
+        <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span> <span class="cadena">'sqlsrv'</span><span class="signo">,</span>
+        <span class="cadena">'BD_HOST'</span> <span class="signo">=></span> <span class="cadena">'localhost'</span><span class="signo">,</span>
+        <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span> <span class="numero">1433</span><span class="signo">,</span>
+        <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span> <span class="cadena">'sa'</span><span class="signo">,</span>
+        <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span> <span class="cadena">''</span><span class="signo">,</span>
+        <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span> <span class="cadena">'escrud'</span><span class="signo">,</span>
+        <span class="cadena">'BD_DATOS_DSN'</span> <span class="signo">=></span> <span class="cadena">'Encrypt=YES;TrustServerCertificate=YES;'</span><span class="signo">,</span>
+        <span class="cadena">'IDIOMA'</span> <span class="signo">=></span> <span class="cadena">'es'</span><span class="signo">,</span>
+        <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span> <span class="cadena">'America/Bogota'</span><span class="signo">,</span>
+    <span class="signo">]</span>
+<span class="signo">];</span>
+
+<span class="comentario">// El segundo parámetro indica la conexión por defecto que será utilizada.</span>
+Configuracion::inicializar<span class="signo">(</span><span class="variable">$conexiones</span><span class="signo">,</span> <span class="cadena">'mysql'</span><span class="signo">);</span>
+<span class="comentario">
+/**
+ * Finalmente, verificamos que hemos inicializado la configuración correctamente
+ * imprimiendo la versión de la herramienta Escrud.
+ */
+</span>
+<span class="palabra-clave">echo</span> Escrud::VERSION<span class="palabra-clave">;</span>
+</code></pre>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#escrud'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

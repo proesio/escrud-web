@@ -472,6 +472,7 @@ ul li ul li:hover a{
     opacity:0.8;
 }
 .tabla{
+    width: 100%;
     -webkit-width:100%;
     border-collapse: collapse;
 }

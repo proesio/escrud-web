@@ -13,6 +13,7 @@ Vue.component('menu-documentacion', {
       menu: [],
       menuVersion: {},
       versiones: [
+        'v4.x',
         'v3.x',
         'v2.x',
         'v1.x'
@@ -20,8 +21,8 @@ Vue.component('menu-documentacion', {
     }
   },
   mounted() {
-    this.asignarMenu('v2.x');
-    this.asignarMenuVersion('v2.x');
+    this.asignarMenu('v4.x');
+    this.asignarMenuVersion('v4.x');
   },
   methods: {
     asignarMenu(version) {

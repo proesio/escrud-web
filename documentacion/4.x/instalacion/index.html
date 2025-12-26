@@ -1,0 +1,62 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Escrud - CRUD en Español">
+  <meta name="keywords" content="instalacion,instalar,crud,escrud">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Instalación - Escrud - CRUD en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="escrud">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Instalación</div>
+          <div class="hr"></div>
+          <p>Escrud es muy sencillo de instalar.</p>
+          <p>Escrud requiere una versión de PHP >= 8.2.0 para poder ser instalado.</p>
+          <p>Para instalar Escrud abrimos nuestra terminal, nos ubicamos en el directorio donde deseamos instalar
+            nuestro proyecto y ejecutamos el siguiente comando.</p>
+          <pre><code>$ composer create-project --prefer-dist proesio/escrud nombre-proyecto</code></pre>
+          <p>Una vez terminado el proceso, composer creará un directorio con el nombre de proyecto que hayamos
+            especificado, donde quedará instalada la herramienta Escrud.</p>
+        </div>
+      </div>
+    </div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#escrud'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>

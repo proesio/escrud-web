@@ -1,0 +1,73 @@
+<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="Juan Felipe Valencia Murillo">
+  <meta name="copyright" content="Juan Felipe Valencia Murillo">
+  <meta name="description" content="Escrud - CRUD en Español">
+  <meta name="keywords" content="convenciones,convencion,crud,escrud">
+  <meta name="robots" content="Index,Follow">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Convenciones - Escrud - CRUD en Español</title>
+  <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
+  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="../../../css/principal.css" />
+  <script type="text/javascript" src="../../../js/config.js"></script>
+</head>
+
+<body>
+  <div id="escrud">
+    <encabezado></encabezado>
+    <menu-documentacion></menu-documentacion>
+    <div class="contenido">
+      <div class="regilla-contenedora">
+        <div class="documentacion">
+          <div style="font-size:300%;">Convenciones</div>
+          <div class="hr"></div>
+          <p>Escrud tiene dos convenciones que se recomiendan utilizar para aprovechar al máximo la herramienta.</p>
+          <p>Convención #1: La llave primaria de la tabla debe llamarse <em>id</em> y tener el atributo auto
+            incrementable.</p>
+          <p>Convención #2: Las tablas en la base de datos deben contar con dos campos que puedan ser nulos y de tipo
+            <em>timestamp</em> llamados <em>creado_en</em> y <em>actualizado_en</em>, los cuales nos permiten llevar el
+            registro del tiempo.
+          </p>
+          <p>Si no deseamos utilizar estas convenciones, podemos omitirlas de la siguiente manera.</p>
+          <pre>
+<code><span class="php">&lt;?php</span>
+
+Escrud::tabla<span class="signo">(</span><span class="cadena">'usuarios'</span><span class="signo">)</span>
+    ->llavePrimaria<span class="signo">(</span><span class="cadena">'codigo'</span><span class="signo">)</span>
+    ->creadoEn<span class="signo">(</span><span class="cadena">'created_at'</span><span class="signo">)</span>
+    ->actualizadoEn<span class="signo">(</span><span class="cadena">'updated_at'</span><span class="signo">)</span>
+    ->renderizar<span class="signo">();</span>
+</code></pre>
+        </div>
+      </div>
+    </div>
+    <div style="margin-bottom: 10%;"></div>
+    <pie-pagina></pie-pagina>
+  </div>
+  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
+  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
+  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
+  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#escrud'
+    });
+  </script>
+
+  <style type="text/css">
+    @media screen and (max-width:930px) {
+      .contenido {
+        margin-top: 0px;
+      }
+    }
+  </style>
+</body>
+
+</html>
