@@ -1,87 +1,224 @@
-<!--Desarrollado Por Juan Felipe Valencia Murillo.-->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="author" content="Juan Felipe Valencia Murillo">
   <meta name="copyright" content="Juan Felipe Valencia Murillo">
-  <meta name="description" content="Escrud - CRUD en Español">
+  <meta name="description" content="Documentación - Escrud - CRUD en Español">
   <meta name="keywords" content="configuracion,configurar,crud,escrud">
   <meta name="robots" content="Index,Follow">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Configuración - Escrud - CRUD en Español</title>
-  <link rel="icon" type="image/png" href="../../../imagenes/escrud-logo-transparente.png" />
-  <link rel="stylesheet" href="../../../css/fontawesome-5.4.1.min.css" />
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">-->
-  <link rel="stylesheet" href="../../../css/principal.css" />
-  <script type="text/javascript" src="../../../js/config.js"></script>
+  <link rel="icon" type="image/svg+xml" href="../../../assets/images/escrud-isotipo.svg">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/docs.css">
+  <link rel="stylesheet" href="../../../assets/css/php-code.css">
 </head>
 
 <body>
-  <div id="escrud">
-    <encabezado></encabezado>
-    <menu-documentacion></menu-documentacion>
-    <div class="contenido">
-      <div class="regilla-contenedora">
-        <div class="documentacion">
-          <div style="font-size:300%;">Configuración</div>
-          <div class="hr"></div>
-          <p>Escrud es muy sencillo de configurar.</p>
-          <p>Cuando hayamos terminado la instalación por medio de composer debemos incluir el archivo
-            <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar la herramienta Escrud.
-          </p>
-          <p>Para configurar la herramienta Escrud inicializamos la configuración de la siguiente manera.</p>
-          <pre>
-<code><span class="php">&lt;?php</span>
 
-<span class="palabra-clave">require</span> <span class="cadena">'vendor/autoload.php'</span><span class="signo">;</span>
+  <div class="bg-glow"></div>
 
-<span class="palabra-clave">use</span> Escrud\Clases\Escrud<span class="signo">;</span>
-<span class="palabra-clave">use</span> Escrud\Clases\Configuracion<span class="signo">;</span>
+  <!-- INICIO ENCABEZADO -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="/" class="brand">
+        <img style="width: 145px;" src="../../../assets/images/escrud-isologo-eslogan.svg">
+      </a>
 
-Configuracion::inicializar<span class="signo">([</span>
-    <span class="cadena">'BD_CONTROLADOR'</span> <span class="signo">=></span></span> <span class="cadena">'controlador'</span><span class="signo">,</span> <span class="comentario">// Soporta mysql, pgsql, sqlite y sqlsrv.</span>
-    <span class="cadena">'BD_HOST'</span> <span class="signo">=></span></span> <span class="cadena">'host'</span><span class="signo">,</span> <span class="comentario">// IP o DNS del servidor.</span>
-    <span class="cadena">'BD_PUERTO'</span> <span class="signo">=></span></span> <span class="cadena">'puerto'</span><span class="signo">,</span> <span class="comentario">// Puerto donde se ejecuta el servicio.</span>
-    <span class="cadena">'BD_USUARIO'</span> <span class="signo">=></span></span> <span class="cadena">'usuario'</span><span class="signo">,</span> <span class="comentario">// Usuario de la base de datos.</span>
-    <span class="cadena">'BD_CONTRASENA'</span> <span class="signo">=></span></span> <span class="cadena">'contrasena'</span><span class="signo">,</span> <span class="comentario">// Contraseña de la base de datos.</span>
-    <span class="cadena">'BD_BASEDATOS'</span> <span class="signo">=></span></span> <span class="cadena">'basedatos'</span><span class="signo">,</span> <span class="comentario">// Nombre de la base de datos.</span>
-    <span class="cadena">'BD_CODIFICACION'</span> <span class="signo">=></span></span> <span class="cadena">'codificación'</span><span class="signo">,</span> <span class="comentario">// Juego de caracteres. Ej: utf8.</span>
-    <span class="cadena">'IDIOMA'</span> <span class="signo">=></span></span> <span class="cadena">'idioma'</span><span class="signo">,</span> <span class="comentario">// Idioma para mostrar etiquetas, errores SQL y mensajes de la herramienta Escrud. Soporta es, en.</span>
-    <span class="cadena">'ZONA_HORARIA'</span> <span class="signo">=></span></span> <span class="cadena">'Zona/Horaria'</span> <span class="comentario">// [Valor UTC por defecto] Ej: America/Bogota.</span>
-<span class="signo">]);</span>
-<span class="comentario">
+      <ul class="nav-links nav-center" id="navCenter">
+        <li><a href="/" class="nav-link">Inicio</a></li>
+        <li><a href="../../../documentacion/4.x" class="nav-link active">Documentación</a></li>
+        <li><a href="https://github.com/proesio/escrud/archive/v4.0.0.zip" class="nav-link">Descargar</a></li>
+        <li><a href="https://proes.io" class="nav-link" target="_blank">PROES</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir Menú" title="Menú">
+          <svg class="icon-menu" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="theme-toggle" id="themeToggle">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+        </button>
+
+        <a href="https://github.com/proesio/escrud" target="_blank" rel="noopener noreferrer" class="btn-personal"
+          title="Ver repositorio en GitHub.">
+          <span>Repositorio</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- FIN ENCABEZADO -->
+
+  <!-- INICIO CONTENIDO PRINCIPAL -->
+  <div class="doc-layout">
+    <!-- INICIO SIDEBAR DE NAVEGACIÓN -->
+    <aside class="sidebar">
+      <div class="version-selector">
+        <ul>
+          <li>
+            <a>
+              v1.x
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </a>
+            <ul>
+              <li><a href="../../../documentacion/4.x">v4.x</a></li>
+              <li><a href="../../../documentacion/3.x">v3.x</a></li>
+              <li><a href="../../../documentacion/2.x">v2.x</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="../../../documentacion/1.x/instalacion" class="sidebar-link">Instalación</a></li>
+          <li><a href="../../../documentacion/1.x/configuracion" class="sidebar-link active">Configuración</a></li>
+          <li><a href="../../../documentacion/1.x/convenciones" class="sidebar-link">Convenciones</a></li>
+          <li><a href="../../../documentacion/1.x/implementacion" class="sidebar-link">Implementación</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <!-- FIN SIDEBAR DE NAVEGACIÓN -->
+
+    <!-- INICIO DOCUMENTACIÓN -->
+    <main class="documentacion">
+      <h1 class="doc-title-main">Configuración</h1>
+
+      <div class="hr"></div>
+
+      <div class="warning-banner">
+        <div class="warning-icon">!</div>
+        <div class="warning-content">
+            <p><strong>Atención:</strong> Estás visualizando una versión desactualizada de la documentación. Te recomendamos utilizar la <a href="../../../documentacion/4.x">última versión (4.x)</a> para acceder a las últimas características y correcciones.</p>
+        </div>
+      </div>
+
+      <p>Escrud es muy sencillo de configurar.</p>
+      <p>Cuando hayamos terminado la instalación por medio de composer debemos incluir el archivo
+        <em>vendor/autoload.php</em> en nuestro código de programación para poder utilizar la herramienta Escrud.
+      </p>
+      <p>Para configurar la herramienta Escrud inicializamos la configuración de la siguiente manera.</p>
+      
+      <div class="code-container" data-syntax-highlighter>
+        <button class="copy-btn" title="Copiar código">
+          <svg class="icon-copy" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+          </svg>
+          <svg class="icon-check" style="display: none; stroke: #5BC800;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </button>
+        <pre><code class="php-code-target"></code></pre>
+        <script type="text/plain" class="raw-code-source">
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Escrud\Clases\Escrud;
+use Escrud\Clases\Configuracion;
+
+Configuracion::inicializar(
+    [
+        'BD_CONTROLADOR' => 'controlador', // Soporta mysql, pgsql, sqlite y sqlsrv.
+        'BD_HOST' => 'host', // IP o DNS del servidor.
+        'BD_PUERTO' => 'puerto', // Puerto donde se ejecuta el servicio.
+        'BD_USUARIO' => 'usuario', // Usuario de la base de datos.
+        'BD_CONTRASENA' => 'contrasena', // Contraseña de la base de datos.
+        'BD_BASEDATOS' => 'basedatos', // Nombre de la base de datos.
+        'BD_CODIFICACION' => 'codificación', // Juego de caracteres. Ej: utf8.
+        'IDIOMA' => 'idioma', // Idioma para mostrar etiquetas, errores SQL y mensajes de la herramienta Escrud. Soporta es, en.
+        'ZONA_HORARIA' => 'Zona/Horaria' // [Valor UTC por defecto] Ej: America/Bogota.
+    ]
+);
+
 /*
   Finalmente verificamos que hemos inicializado la configuración correctamente
   imprimiendo la versión de la herramienta Escrud.
 */
-</span>
-<span class="palabra-clave">echo</span> Escrud::VERSION<span class="palabra-clave">;</span>
-</code></pre>
+
+echo Escrud::VERSION;
+        </script>
+      </div>
+    </main>
+    <!-- FIN DOCUMENTACIÓN -->
+  </div>
+  <!-- FIN CONTENIDO PRINCIPAL -->
+
+  <!-- INICIO FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-info">
+          <a href="https://proes.io" class="brand" target="_blank">
+            <img style="width: 130px;" src="../../../assets/images/proes-isologo-eslogan.svg">
+          </a>
+          <p class="footer-desc">
+            Herramientas de desarrollo web accesibles y de código abierto para la comunidad hispanohablante.
+          </p>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://facebook.com/proesio" target="_blank" rel="noopener noreferrer" class="social-link"
+            aria-label="Siguenos en Facebook" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCk5pHq8tVsn0RdGoGB56QQg" target="_blank" rel="noopener noreferrer"
+            class="social-link" aria-label="Suscripciones en YouTube" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+              </path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
         </div>
       </div>
+      
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2018 - <span id="copyrightYear"></span> <a href="https://jfvalenciam.proes.io"
+            target="_blank" rel="noopener noreferrer" class="footer-link">Juan Felipe Valencia Murillo</a></p>
+      </div>
     </div>
-    <pie-pagina></pie-pagina>
-  </div>
-  <script type="text/javascript" src="../../../js/vue-2.5.16.min.js"></script>
-  <script type="text/javascript" src="../../../componentes/encabezado.js"></script>
-  <script type="text/javascript" src="../../../componentes/menu-documentacion.js"></script>
-  <script type="text/javascript" src="../../../componentes/pie-pagina.js"></script>
+  </footer>
+  <!-- FIN FOOTER -->
 
-  <script type="text/javascript">
-    new Vue({
-      el: '#escrud'
-    });
-  </script>
+  <!-- INICIO BOTÓN "VOLVER A ARRIBA" -->
+  <button id="scrollToTopBtn" aria-label="Volver arriba" title="Volver arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
+  <!-- FIN BOTÓN "VOLVER A ARRIBA" -->
 
-  <style type="text/css">
-    @media screen and (max-width:930px) {
-      .contenido {
-        margin-top: 0px;
-      }
-    }
-  </style>
+  <script src="../../../assets/js/main.js"></script>
+  <script src="../../../assets/js/php-code.js"></script>
 </body>
 
 </html>
