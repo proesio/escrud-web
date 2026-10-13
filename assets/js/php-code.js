@@ -20,7 +20,7 @@ codeBlocks.forEach(container => {
   code = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
   // 3. Regex de resaltado de sintaxis
-  const regex = /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\/\*[\s\S]*?\*\/)|(\/\/.*)|(\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|(\b(?:class|function|public|private|protected|static|readonly|return|if|else|elseif|for|foreach|while|do|switch|case|break|continue|new|namespace|use|extends|implements|true|false|null|echo|print|require_once|include_once|__DIR__|const)\b)|(\b[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*\b)(?=\s*\()|(\b[A-Z][a-zA-Z0-9_]*\b)|(\b\d+\b)|(&lt;\?php|\?&gt;)/g;
+  const regex = /("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\/\*[\s\S]*?\*\/)|(\/\/.*)|(\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)|(\b(?:class|function|public|private|protected|static|readonly|return|if|else|elseif|for|foreach|while|do|switch|case|break|continue|new|namespace|use|extends|implements|true|false|null|echo|print|require_once|include_once|__DIR__|const|try)\b)|(\b[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*\b)(?=\s*\()|(\b[A-Z][a-zA-Z0-9_]*\b)|(\b\d+\b)|(&lt;\?php|\?&gt;)/g;
 
   let highlightedCode = code.replace(regex, (match, p1, p2, p3, p4, p5, p6, p7, p8, p9) => {
     if (p1) return `<span class="string">${p1}</span>`;
